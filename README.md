@@ -12,8 +12,8 @@ yolov6: https://github.com/meituan/YOLOv6 \
 yolov7: https://github.com/WongKinYiu/yolov7 \
 yolov8: https://github.com/ultralytics/ultralytics
 
-Note: If you use INT8 quantization, you need an additional file
-C++：calibrator.cpp & calibrator.h
+Note: If you use INT8 quantization, you need an additional file\
+C++：calibrator.cpp & calibrator.h\
 Python: calibrator.py
 
 # Run
