@@ -1,6 +1,9 @@
 # ONNXToTensorRT
 C++ and Python convert ONNX to TensorRT
 
+# prerequisite
+Please confirm that you have configured CUDA, CUDNN, TensorRT
+
 # quantization 
 FP32\
 FP16\
