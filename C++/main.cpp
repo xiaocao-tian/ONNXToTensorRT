@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
 	// Calibrated table path when quantified to INT8 (present to read, not present to create)
 	const char* calib_table = "../weights/calibrator.table";
 
-	/* 
+	/*
     Using FP32 quantization, set FP16_mode = False & INT8_mode = False
     Using FP16 quantization, set FP16_mode = True & INT8_mode = False
     Using Int8 quantization, set FP16_mode = False & INT8_mode = True
