@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
     */
 	bool FP16 = false;
 	bool INT8 = true;
-
+ 
 	std::ifstream file(ONNX_file, std::ios::binary);
 	if (!file.good()) {
 		std::cout << "Load ONNX file failed！" << std::endl;
