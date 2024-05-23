@@ -25,7 +25,7 @@ cv::Mat Calibrator::preprocess_img(cv::Mat& img, int input_w, int input_h) {
     return out;
 }
 
-void Calibrator::getFiles(std::string path, std::vector<std::string>& files){
+void Calibrator::getFiles(std::string path, std::vector<std::string>& files) {
     intptr_t Handle;
     struct _finddata_t FileInfo;
     std::string p;
@@ -38,7 +38,7 @@ void Calibrator::getFiles(std::string path, std::vector<std::string>& files){
     }
 }
 
-Calibrator::Calibrator(int batchsize, int input_w, int input_h, std::string img_dir, const char* calib_table_name, bool read_cache){
+Calibrator::Calibrator(int batchsize, int input_w, int input_h, std::string img_dir, const char* calib_table_name, bool read_cache) {
     BATCHSIZE = batchsize;
     WIDTH = input_w;
     HEIGHT = input_h;
