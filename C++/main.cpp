@@ -14,7 +14,6 @@ class Logger : public nvinfer1::ILogger {
 
 void ONNX2TensorRT(const char* ONNX_file, std::string& Engine_file, bool& FP16, bool& INT8, std::string& image_dir, const char*& calib_table) {
 	std::cout << "Load ONNX file form: " << ONNX_file << "\nStart export..." << std::endl;
-
 	nvinfer1::IBuilder* builder = nvinfer1::createInferBuilder(logger);
 
 	uint32_t flag = 1U << static_cast<uint32_t>(nvinfer1::NetworkDefinitionCreationFlag::kEXPLICIT_BATCH);
@@ -31,7 +30,7 @@ void ONNX2TensorRT(const char* ONNX_file, std::string& Engine_file, bool& FP16, 
 	config->setMemoryPoolLimit(nvinfer1::MemoryPoolType::kWORKSPACE, 16 * (1 << 20));
 	if (FP16) {
 		if (!builder->platformHasFastFp16()) {
-			std::cout << "FP16 quantization is not supported!" << std::endl;
+			std::cout << "不支持FP16量化！" << std::endl;
 			system("pause");
 			return;
 		}
@@ -39,7 +38,7 @@ void ONNX2TensorRT(const char* ONNX_file, std::string& Engine_file, bool& FP16, 
 	}
 	else if (INT8) {
 		if (!builder->platformHasFastInt8()) {
-			std::cout << "INT8 quantization is not supported!" << std::endl;
+			std::cout << "不支持INT8量化！" << std::endl;
 			system("pause");
 			return;
 		}
@@ -63,24 +62,15 @@ void ONNX2TensorRT(const char* ONNX_file, std::string& Engine_file, bool& FP16, 
 }
 
 int main(int argc, char** argv) {
-	// ONNX file path
-	const char* ONNX_file = "../weights/yolov8s.onnx";
-	// ENGINE file save path
-	std::string Engine_file = "../weights/yolov8s.engine";
+	const char* ONNX_file = "../weights/yolov8n.onnx";
+	std::string Engine_file = "../weights/yolov8n.engine";
 
-	// Quantified as INT8, the images path
 	std::string image_dir = "../images/";
-	// Calibrated table path when quantified to INT8 (present to read, not present to create)
 	const char* calib_table = "../weights/calibrator.table";
 
-	/*
-    Using FP32 quantization, set FP16_mode = False & INT8_mode = False
-    Using FP16 quantization, set FP16_mode = True & INT8_mode = False
-    Using Int8 quantization, set FP16_mode = False & INT8_mode = True
-    */
-	bool FP16 = false;
-	bool INT8 = true;
- 
+	bool FP16 = true;
+	bool INT8 = false;
+
 	std::ifstream file(ONNX_file, std::ios::binary);
 	if (!file.good()) {
 		std::cout << "Load ONNX file failed！" << std::endl;
